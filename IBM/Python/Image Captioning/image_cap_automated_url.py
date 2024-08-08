@@ -8,8 +8,8 @@ from transformers import AutoProcessor, BlipForConditionalGeneration
 processor = AutoProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
 model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
 
-# URL of the page to scrape
-url = "https://en.wikipedia.org/wiki/IBM"
+# Get the URL from user input
+url = input("Enter the URL of the page to scrape: ")
 
 # Download the page
 response = requests.get(url)
@@ -22,8 +22,8 @@ img_elements = soup.find_all('img')
 # Open a file to write the captions
 with open("captions.txt", "w") as caption_file:
     # Iterate over each img element
-    for img_element in img_elements:
-        img_url = img_element.get('src')
+    for img_elem in img_elements:
+        img_url = img_elem.get('src')
 
         # Skip if the image is an SVG or too small (likely an icon)
         if 'svg' in img_url or '1x1' in img_url:
@@ -37,9 +37,9 @@ with open("captions.txt", "w") as caption_file:
 
         try:
             # Download the image
-            response = requests.get(img_url)
+            img_response = requests.get(img_url)
             # Convert the image data to a PIL Image
-            raw_image = Image.open(BytesIO(response.content))
+            raw_image = Image.open(BytesIO(img_response.content))
             if raw_image.size[0] * raw_image.size[1] < 400:  # Skip very small images
                 continue
 
@@ -48,9 +48,9 @@ with open("captions.txt", "w") as caption_file:
             # Process the image
             inputs = processor(raw_image, return_tensors="pt")
             # Generate a caption for the image
-            out = model.generate(**inputs, max_new_tokens=50)
+            output = model.generate(**inputs, max_new_tokens=50)
             # Decode the generated tokens to text
-            caption = processor.decode(out[0], skip_special_tokens=True)
+            caption = processor.decode(output[0], skip_special_tokens=True)
 
             # Write the caption to the file, prepended by the image URL
             caption_file.write(f"{img_url}: {caption}\n")

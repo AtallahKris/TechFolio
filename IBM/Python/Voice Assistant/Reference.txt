@@ -1,7 +1,0 @@
-You'll need to run these commands everytime you wish to make a new change to one of the files.
-# docker build . -t voice-chatapp-powered-by-openai
-# docker run -p 8000:8000 voice-chatapp-powered-by-openai
-
-Original Code:
-https://github.com/arora-r/chatapp-with-voice-and-openai-outline
-

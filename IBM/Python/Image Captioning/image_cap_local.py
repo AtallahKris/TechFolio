@@ -2,15 +2,18 @@ import os
 import glob
 import requests
 from PIL import Image
+
 from transformers import Blip2Processor, Blip2ForConditionalGeneration #Blip2 models
 
 # Load the pretrained processor and model
 processor = Blip2Processor.from_pretrained("Salesforce/blip2-opt-2.7b")
 model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
 
-# Specify the directory where your images are
-image_dir = "/path/to/your/images"
-image_exts = ["jpg", "jpeg", "png"]  # specify the image file extensions to search for
+# Get the directory where your images are from user input
+image_dir = input("Enter the absolute path where your image is: ")
+
+# Specify the image file extensions to search for
+image_exts = ["jpg", "jpeg", "png"]
 
 # Open a file to write the captions
 with open("captions.txt", "w") as caption_file:
