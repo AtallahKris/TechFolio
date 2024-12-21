@@ -1,0 +1,85 @@
+Variables: <\[A-Za-z_]{1}[A-Za-z0-9_$]{1023};
+Backslash: \123 = 1b'1;
+MODULE1 INSTA (.a(a) == .a, no . => follow MODULE1 param order, 
+                .* : name and the connecting net name are the same);
+
+bit: 2state || logic: 4state
+4-state: 0 || 1 || Z{dont care} || X{uninitialized or problem};
+16'sh0001 = 16'sh1 || q[3:0] = '1 = 1111;
+a_inverse = {<< {a}};
+
+(condition) ? (any bit 1) : (all bits 0)
+(1'bx) ? 8'bOlxzOlxz : 8'bllllOOOO => return 8'bxlxxOxxx {both 0 or both 1, else X}
+
+always_comb begin ... end {whenever change, execute}
+always_ff @(posedge clk) begin ... end {execute at posedge clk}
+
+logic [15:0] vl = a + b; {not updated if a or b change}
+wire [15:0] nl = a + b; {updated if a or b change}
+
+port vs net mismatch:   more bits {unsigned{1,}: add zeros MSBs} || {signed{2}: add sign MSBs}
+                        less bits {lose MSBs}
+
+data[2x4] = '{ '{0,1,2,3}, '{4,5,6,7} }; == //data = [0,1,2,3 ; 4,5,6,7];
+data_3D = '{default: {default: {default:'0}}}; // nested defaults 
+
+
+typedef enum logic [1:0] {ADD, SUB, MULT, DIV2} opcodes_t;
+
+enum_variable_name.next(0) 
+enum_variable_name.name
+
+a > b {a signed, b unsigned} => use fabs()
+a = data inside {[0:255]} // true if in range
+
+
+{}
+module multiply_by_power_of_two # (parameter N = 8)
+(input logic [N—1:0] data_in,
+input logic [$clog2(N)-1:0] base2exp,
+output logic [N—1:0] data_out
+) ;
+
+assign data_out = data_in << base2exp; // shift left
+endmodule: multiply_by_power_of_two
+
+{}
+module rotate_left_rfactor_times # (parameter N = 8)
+(input logic [N—1:0] data_in,
+input logic [$clog2(N)-1:0] rfactor,
+output logic [N—1:0] data_out
+);
+logic [N*2-l:0] temp;
+assign temp = {data_in,data_in} << rfactor; // rotate left
+assign data_out = temp[N*2-l:N]; // select left half of temp
+endmodule: rotate left rfactor times
+
+{}
+module increment_and_add #(parameter N = 5)
+(input logic [N—1:0] data_in,
+output logic [N—1:0] data_out1,
+output logic [N—1:0] data_out2
+);
+logic [N—1:0] incremented_data_in;
+assign incremented_data_in = data_in + 1;
+assign data_out1 = data_in + incremented_data_in;
+assign data_out2 = incremented_data_in + incremented_data_in;
+endmodule: increment_and_add
+
+{}
+function automatic logic [N-1:0] factorial_f([N-l:0] in);
+if (in <= 1) factorial_f = 1;
+else factorial_f = in * factorial_f(in-1);
+endfunction: factorial_f
+
+
+
+
+
+
+
+
+
+
+
+

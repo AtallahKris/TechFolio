@@ -5,6 +5,8 @@
 > For clarity, I organized the projects into folders corresponding to their respective courses.
 > 
 > While I drew inspiration from these labs, this project is not officially affiliated with or endorsed by IBM, Akamai, or Coursera. The ideas and implementations are my own, and I take full responsibility for the content shared in this repository.
+> 
+> Additionally, I have worked on numerous other projects that are not part of the Coursera labs. Each project may include its own README for more details; if there is no README, that means this is original content created by me.
 
 > [!WARNING]
 > Please feel free to use this code for educational purposes, but I encourage you to review and understand the concepts before applying them in your own projects.
