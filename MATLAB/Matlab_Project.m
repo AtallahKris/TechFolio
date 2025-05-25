@@ -142,7 +142,7 @@ classdef Matlab_Project < matlab.apps.AppBase
                 app.SubtotalwTaxField.Value = (app.SubtotalField.Value * 0.05) + app.SubtotalField.Value;
             end
 
-            if app.CurrencyDropDown.Value == "LBP"
+            if app.CurrencyDropDown.Value == "CAD"
                 app.SubtotalField.Value = (app.S1.Value*5.99*96 + app.DishoftheDayDropDown.Value + app.SoupDropDown.Value + app.S2.Value*7.99*96 + app.S3.Value*8.99*96  +...
                     app.S4.Value*8.99*96 + app.S5.Value*8.99*96  + app.S6.Value*7.99*96 + app.S7.Value*10.99*96 + app.S8.Value*9.99*96  + app.S9.Value*8.99*96 + app.S10.Value*9.99*96 + ...
                     app.S11.Value*11.99*96 + app.S12.Value*12.99*96 + app.S13.Value*18.99*96 + app.S14.Value*15.99*96 + app.S15.Value*12.99*96 + app.S16.Value*20.99*96 + ...
@@ -242,28 +242,28 @@ classdef Matlab_Project < matlab.apps.AppBase
                 return;
             end
 
-            if app.CurrencyDropDown.Value == "LBP"
+            if app.CurrencyDropDown.Value == "CAD"
                 switch (daynb)
                     case 1
-                        app.DishoftheDayDropDown.Items = ["< Sunday >" "Vegetarian: Roasted Vegetable Salad (1056LBP)" "Meat: Roast Beef w Roasted Potatoes (1728LBP)"];
+                        app.DishoftheDayDropDown.Items = ["< Sunday >" "Vegetarian: Roasted Vegetable Salad (1056CAD)" "Meat: Roast Beef w Roasted Potatoes (1728CAD)"];
                         app.DishoftheDayDropDown.ItemsData = [0 1056 1728];
                     case 2
-                        app.DishoftheDayDropDown.Items = ["< Monday >" "Vegetarian: Chickpea Curry (1248LBP)" "Meat: Grilled Chicken w Rice (1440LBP)"];
+                        app.DishoftheDayDropDown.Items = ["< Monday >" "Vegetarian: Chickpea Curry (1248CAD)" "Meat: Grilled Chicken w Rice (1440CAD)"];
                         app.DishoftheDayDropDown.ItemsData = [0 1248 1440];
                     case 3
-                        app.DishoftheDayDropDown.Items = ["< Tuesday >" "Vegetarian: Falafelwrap (960LBP)" "Meat: Beef Burger w Fries (1344LBP)"];
+                        app.DishoftheDayDropDown.Items = ["< Tuesday >" "Vegetarian: Falafelwrap (960CAD)" "Meat: Beef Burger w Fries (1344CAD)"];
                         app.DishoftheDayDropDown.ItemsData = [0 960 1344];
                     case 4
-                        app.DishoftheDayDropDown.Items = ["< Wednesday >" "Vegetarian: Veggie Quesadilla (1056LBP)" "Meat: Steak Fajitas (1632LBP)"];
+                        app.DishoftheDayDropDown.Items = ["< Wednesday >" "Vegetarian: Veggie Quesadilla (1056CAD)" "Meat: Steak Fajitas (1632CAD)"];
                         app.DishoftheDayDropDown.ItemsData = [0 1056 1632];
                     case 5
-                        app.DishoftheDayDropDown.Items = ["< Thursday >" "Vegetarian: Spinach and Ricotta Ravioli (1152LBP)" "Meat: Lamb Chops w Mashed Potatoes (1920LBP)"];
+                        app.DishoftheDayDropDown.Items = ["< Thursday >" "Vegetarian: Spinach and Ricotta Ravioli (1152CAD)" "Meat: Lamb Chops w Mashed Potatoes (1920CAD)"];
                         app.DishoftheDayDropDown.ItemsData = [0 1152 1920];
                     case 6
-                        app.DishoftheDayDropDown.Items = ["< Friday >" "Vegetarian: Margherita Pizza (1248LBP)" "Meat: Philly Cheesesteak Sandwich (1056LBP)"];
+                        app.DishoftheDayDropDown.Items = ["< Friday >" "Vegetarian: Margherita Pizza (1248CAD)" "Meat: Philly Cheesesteak Sandwich (1056CAD)"];
                         app.DishoftheDayDropDown.ItemsData = [0 1248 1056];
                     case 7
-                        app.DishoftheDayDropDown.Items = ["< Saturday >" "Vegetarian: Grilled Veggie Skewers (1344LBP)" "Meat: BBQ Ribs w Corn on the Cob (1824LBP)"];
+                        app.DishoftheDayDropDown.Items = ["< Saturday >" "Vegetarian: Grilled Veggie Skewers (1344CAD)" "Meat: BBQ Ribs w Corn on the Cob (1824CAD)"];
                         app.DishoftheDayDropDown.ItemsData = [0 1344 1824];
                 end
                 return;
@@ -388,12 +388,12 @@ classdef Matlab_Project < matlab.apps.AppBase
             app.SubtotalField.Value = 0;
             app.SubtotalwTaxField.Value = 0;
 
-            if app.CurrencyDropDown.Value == "LBP"
+            if app.CurrencyDropDown.Value == "CAD"
                 for i = 1:numel(PLcontrol)
-                    PLcontrol{i}.Text = "LBP";
+                    PLcontrol{i}.Text = "CAD";
                 end
 
-                app.UnderTitle.Text = sprintf("Current Rate: 1 USD = 96,000 LBP\n" + ...
+                app.UnderTitle.Text = sprintf("Current Rate: 1 USD = 96,000 CAD\n" + ...
                     "Values shown are multipled by 1,000");
 
                 app.P1.Text = "575";
@@ -418,11 +418,11 @@ classdef Matlab_Project < matlab.apps.AppBase
                 app.P20.Text = "355";
                 app.P21.Text = "479";
 
-                app.SoupDropDown.Items = ["< None >" "Asparagus (960LBP)" "Chinese Noodle (672LBP)" "Egg Drop (768LBP)" "Fish and Tofu (1056LBP)" "Hototay (576LBP)"];
+                app.SoupDropDown.Items = ["< None >" "Asparagus (960CAD)" "Chinese Noodle (672CAD)" "Egg Drop (768CAD)" "Fish and Tofu (1056CAD)" "Hototay (576CAD)"];
                 app.SoupDropDown.ItemsData = [0 960 672 768 1056 576];
 
-                app.SubtotalField.ValueDisplayFormat = "%11.4g LBP";
-                app.SubtotalwTaxField.ValueDisplayFormat = "%11.4g LBP";
+                app.SubtotalField.ValueDisplayFormat = "%11.4g CAD";
+                app.SubtotalwTaxField.ValueDisplayFormat = "%11.4g CAD";
             end
 
             if app.CurrencyDropDown.Value == "US Dollar"
@@ -880,7 +880,7 @@ classdef Matlab_Project < matlab.apps.AppBase
 
             % Create CurrencyDropDown
             app.CurrencyDropDown = uidropdown(app.UIFigure);
-            app.CurrencyDropDown.Items = {'US Dollar', 'LBP'};
+            app.CurrencyDropDown.Items = {'US Dollar', 'CAD'};
             app.CurrencyDropDown.ValueChangedFcn = createCallbackFcn(app, @CurrencyDropDownValueChanged, true);
             app.CurrencyDropDown.Visible = 'off';
             app.CurrencyDropDown.FontSize = 24;
@@ -1357,7 +1357,7 @@ classdef Matlab_Project < matlab.apps.AppBase
             app.Copyright.FontSize = 18;
             app.Copyright.Visible = 'off';
             app.Copyright.Position = [355 80 343 120];
-            app.Copyright.Text = {'Copyright (c) 2023'; ' Kris Antony Atallah & Anthony Gemayel '; 'All rights reserved.'; ''};
+            app.Copyright.Text = {'Copyright (c) 2023'; ' Kris Antony Atallah '; 'All rights reserved.'; ''};
 
             % Create O17
             app.O17 = uilabel(app.UIFigure);

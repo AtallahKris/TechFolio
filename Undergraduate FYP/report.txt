@@ -1,0 +1,16 @@
+## Project Description
+
+The File Transfer System enables secure file transfer between devices using colored 2D barcodes as the transmission medium. It works without network connectivity by encoding file data into visual barcodes that can be displayed on one device and captured by another device's camera.
+
+## System Workflow
+
+```
+Original Files → Chunking (send.py) → HD2DC Encoding (encode.py) → Visual Transmission (transmission.py) →
+Camera Capture (capture.py) → HD2DC Decoding (decode.py) → Reassembly (receive.py) → Restored Files
+```
+
+## Notes
+
+Note 1: File processing must be independent of chunk names because the transmission medium (HD2DC image processing) does not retain file name information. The decoded_chunks should only recognize the name of the original file, not the names of the individual chunks. While the original files may be organized in folders with preserved file names and hierarchy, this does not apply to the chunk names.
+
+Note 2: I am not satisfied with the current state of the report. I will update this section later after I have had a chance to review the report in detail and make the necessary revisions. It is important that the report accurately represents the effort and findings of the project, and I am committed to ensuring that it meets these standards.
